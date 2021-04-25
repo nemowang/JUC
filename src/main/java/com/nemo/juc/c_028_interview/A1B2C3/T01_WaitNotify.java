@@ -7,12 +7,10 @@ package com.nemo.juc.c_028_interview.A1B2C3;
  */
 public class T01_WaitNotify {
 
-    private static Thread t1 = null;
-    private static Thread t2 = null;
-
     public static void main(String[] args) {
         Object lock = new Object();
-        t1 = new Thread(() -> {
+        // 循环结束后要调用notify，防止最后一个线程wait后无法被叫醒
+        new Thread(() -> {
             synchronized (lock) {
                 for (int i = 0; i < 26; i++) {
                     System.out.print(i + 1);
@@ -27,9 +25,10 @@ public class T01_WaitNotify {
                 // 循环结束后要调用notify，防止最后一个线程wait后无法被叫醒
                 lock.notify();
             }
-        });
+        }).start();
 
-        t2 = new Thread(() -> {
+        // 循环结束后要调用notify，防止最后一个线程wait后无法被叫醒
+        new Thread(() -> {
             synchronized (lock) {
                 for (int i = 0; i < 26; i++) {
                     System.out.print((char) (65 + i));
@@ -43,9 +42,6 @@ public class T01_WaitNotify {
                 // 循环结束后要调用notify，防止最后一个线程wait后无法被叫醒
                 lock.notify();
             }
-        });
-
-        t1.start();
-        t2.start();
+        }).start();
     }
 }
