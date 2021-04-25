@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Author Nemo Wong
  * @Date 2021/4/22 16:52
- * @Description 与T03_NotifyHoldingLock的区别就是 notify()后释放锁，让另一个线程继续执行
+ * @Description 与T03_NotifyHoldingLock的区别就是 notify()后唤醒线程，让另一个线程继续执行
  */
 public class T04_NotifyFreeLock {
 
