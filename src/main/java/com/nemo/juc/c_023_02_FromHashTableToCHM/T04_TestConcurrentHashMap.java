@@ -6,7 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @Author Nemo Wong
  * @Date 2021/4/27 16:56
- * @Description
+ * @Description ConcurrentHashMap
+ * put方法使用CAS
  * 效率优越性主要体现在读上
  */
 public class T04_TestConcurrentHashMap {
