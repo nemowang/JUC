@@ -19,6 +19,7 @@ public class T00_LockSupport {
                 LockSupport.unpark(t2);
                 LockSupport.park();
             }
+            LockSupport.unpark(t2);
         }, "numberThread");
 
         t2 = new Thread(() -> {
@@ -28,6 +29,7 @@ public class T00_LockSupport {
                 LockSupport.unpark(t1);
                 LockSupport.park();
             }
+            LockSupport.unpark(t1);
         }, "letterThread");
 
         t1.start();
